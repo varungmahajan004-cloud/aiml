@@ -2,18 +2,23 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report
+
 df=pd.read_excel('dataset.xlsx')
+
 # Select numerical features for mechanical analysis
 features = ['Air temperature [K]', 'Process temperature 
 [K]','Rotational speed [rpm]', 'Torque [Nm]', 'Tool wear [min]']
 X = df[features]
 y = df['Machine failure'] # Target for classification
+
 X_train, X_test, y_train, y_test = train_test_split(X, 
 y,test_size=0.2, random_state=42)
+
 clf = RandomForestClassifier()
 clf.fit(X_train, y_train)
 print("Classification Report:\n", classification_report(y_test, 
 clf.predict(X_test)))
+
 Classification Report:
  precision recall f1-score support
  0 0.99 1.00 0.99 1939
