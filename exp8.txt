@@ -1,24 +1,30 @@
 import numpy as np
 import random
+
 states=["Operational","Minor Wear","Major Fault","Failure"]
+
 TM= np.array([
  [0.7,0.2,0.1,0.0],
  [0.2,0.5,0.2,0.1],
  [0.0,0.3,0.4,0.3],
  [0.0,0.0,0.0,1.0]])
+
 import matplotlib.pyplot as plt
 history=[]
 state=0
+
 for i in range(15):
  history.append(state)
  state = np.random.choice([0,1,2,3], p = TM[state])
  print(f"Machine State {i}:", states[state])
+
 plt.plot(history)
 plt.title("Machine State Transition over time")
 plt.xlabel("Time")
 plt.ylabel("State")
 plt.figure(figsize=(10, 10))
 plt.show()
+
 Machine State 0: Operational
 Machine State 1: Minor Wear
 Machine State 2: Minor Wear
