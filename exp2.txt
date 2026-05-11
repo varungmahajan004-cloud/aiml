@@ -1,0 +1,35 @@
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+df=pd.read_excel('dataset.xlsx')
+# Display basic info (Exp 02: Acquire and Analyze)
+print(df.info())
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 10000 entries, 0 to 9999
+Data columns (total 15 columns):
+ # Column Non-Null Count Dtype 
+--- ------ -------------- ----- 
+ 0 Unnamed: 0 10000 non-null int64 
+ 1 UDI 10000 non-null int64 
+ 2 Product ID 10000 non-null object 
+ 3 Type 10000 non-null object 
+ 4 Air temperature [K] 10000 non-null float64
+ 5 Process temperature [K] 10000 non-null float64
+ 6 Rotational speed [rpm] 10000 non-null int64 
+ 7 Torque [Nm] 10000 non-null float64
+ 8 Tool wear [min] 10000 non-null int64 
+ 9 Machine failure 10000 non-null int64 
+ 10 TWF 10000 non-null int64 
+ 11 HDF 10000 non-null int64 
+ 12 PWF 10000 non-null int64 
+ 13 OSF 10000 non-null int64 
+ 14 RNF 10000 non-null int64 
+dtypes: float64(3), int64(10), object(2)
+memory usage: 1.1+ MB
+None
+# Visualization: Engine Vibration/Speed Analysis (Exp 02 requirement)
+plt.figure(figsize=(10, 6))
+sns.scatterplot(data=df, x='Rotational speed [rpm]', y='Torque [Nm]', 
+hue='Machine failure')
+plt.title("Mechanical Analysis: Torque vs Rotational Speed")
+plt.show()
